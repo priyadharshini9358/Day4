@@ -1,0 +1,44 @@
+import java.util.Scanner;
+public class Solution1 {
+	    public static void main(String[] args) {
+	        Scanner input = new Scanner(System.in);
+
+	        int gokul = input.nextInt();
+	        int minor = input.nextInt();
+	        int total = input.nextInt();
+
+	        int gokulScore = 0;
+	        int minorScore = 0;
+	        boolean gokulTurn = true;
+
+	        while (total > 0) {
+	            int a = gokulTurn ? gokul : minor;
+	            int b = total;
+
+	            while (b != 0) {
+	                int temp = b;
+	                b = a % b;
+	                a = temp;                         
+	            }
+	            int gcd = a;
+
+	            if (gokulTurn) gokulScore += gcd;
+	            else minorScore += gcd;
+
+	            total -= gcd;
+	            gokulTurn = !gokulTurn;
+	        }
+
+	        if (gokulScore > minorScore)
+	            System.out.println("Winner: Gokul");
+	        else if (minorScore > gokulScore)
+	            System.out.println("Winner: Minor");
+	        else
+	            System.out.println("It's a draw!");
+	    }
+	}
+
+
+	        
+
+
